@@ -16,6 +16,9 @@ public class EmployeePayrollService
 	{
 		this.employeePayrollList=employeePayrollList;
 	}
+	public EmployeePayrollService() {
+		// TODO Auto-generated constructor stub
+	}
 	public static void main(String[] args) 
 	{
 		System.out.println("***Welcome to Employee Payroll Service***");
@@ -55,5 +58,13 @@ public class EmployeePayrollService
 			return new EmployeePayrollFileIOService().countEntries();
 		return 0;
 	}
-
+	public long readDataFromFile(IOService fileIo) 
+	{
+		List<String> employeeDataFromFile = new ArrayList<String>();
+		if(fileIo.equals(IOService.FILE_IO)) 
+		{
+			employeeDataFromFile = new EmployeePayrollFileIOService().readDataFromFile();
+		}
+		return employeeDataFromFile.size();
+	}
 }

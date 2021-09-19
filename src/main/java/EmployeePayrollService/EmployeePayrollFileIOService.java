@@ -68,7 +68,7 @@ public class EmployeePayrollFileIOService
 		{
 			Files.lines(new File(PAYROLL_FILE_NAME).toPath())
 				.map(employeeData -> employeeData.trim())
-				.forEach(employeeData -> {
+				.forEach(employeeData -> { 
 					System.out.println(employeeData);
 					employeePayrollList.add(employeeData);
 			});
@@ -77,6 +77,7 @@ public class EmployeePayrollFileIOService
 		{
 			e.printStackTrace();
 		}
+		
 		return employeePayrollList;
 	}
 }

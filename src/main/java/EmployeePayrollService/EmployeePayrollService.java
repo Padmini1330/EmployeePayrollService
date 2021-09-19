@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class EmployeePayrollService 
 {
-	public enum IOService {
+	public enum IOService 
+	{
 		CONSOLE_IO, FILE_IO, DB_IO, REST_IO
 	}
 	private List<EmployeePayrollData> employeePayrollList;
@@ -41,6 +42,18 @@ public class EmployeePayrollService
 		System.out.println("Enter Employee Salary:");
 		double salary=scanner.nextDouble();
 		employeePayrollList.add(new EmployeePayrollData(id, name, salary));
+	}
+	public void printData(IOService ioService) 
+	{
+		if(ioService.equals(IOService.FILE_IO))
+			new EmployeePayrollFileIOService().printData();
+		
+	}
+	public long countEntries(IOService ioService) 
+	{
+		if(ioService.equals(IOService.FILE_IO))
+			return new EmployeePayrollFileIOService().countEntries();
+		return 0;
 	}
 
 }
